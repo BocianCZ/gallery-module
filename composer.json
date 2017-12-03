@@ -1,0 +1,39 @@
+{
+  "name": "bociancz/gallery-module",
+  "description": "Gallery management in AsgardCMS",
+  "type": "asgard-module",
+  "license": "MIT",
+  "keywords": [
+    "asgardcms",
+    "gallery",
+  ],
+  "authors": [
+    {
+      "name": "David Cap",
+      "email": "david@bocian.cz"
+    }
+  ],
+  "require": {
+    "php": ">=5.6",
+    "composer/installers": "~1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~5.7",
+    "orchestra/testbench": "3.4.*",
+    "phpro/grumphp": "^0.9.1",
+    "friendsofphp/php-cs-fixer": "^1.11"
+  },
+  "autoload": {
+    "psr-4": {
+      "Modules\\Gallery\\": ""
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\Gallery\\": ".",
+      "Modules\\": "Modules/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

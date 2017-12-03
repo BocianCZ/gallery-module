@@ -1,0 +1,20 @@
+{
+    "name": "Gallery",
+    "alias": "gallery",
+    "description": "Gallery management in AsgardCMS",
+    "keywords": [
+        "Gallery",
+        "AsgardCMS"
+    ],
+    "version": "1.0.0",
+    "active": 1,
+    "order": 2,
+    "providers": [
+        "Modules\\Gallery\\Providers\\GalleryServiceProvider",
+        "Modules\\Gallery\\Providers\\RouteServiceProvider"
+    ],
+    "aliases":{
+        "GalleryWidget": "Modules\\Gallery\\Blade\\Facades\\GalleryWidget"
+    },
+    "files": []
+}
