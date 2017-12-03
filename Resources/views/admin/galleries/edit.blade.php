@@ -2,7 +2,7 @@
 
 @section('content-header')
     <h1>
-        {{ trans('tag::tags.edit tag') }}
+        {{ trans('gallery::galleries.edit gallery') }}
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
@@ -17,7 +17,11 @@
         <div class="col-md-12">
             <div class="nav-tabs-custom">
                 <div class="tab-content">
-                    @include('gallery::admin.galleries.partials.edit-fields')
+                    <div class="box-body">
+                        {!! Form::normalInput('name', trans('gallery::galleries.name'), $errors, $gallery, ['data-slug' => 'source']) !!}
+                        {!! Form::normalInput('system_name', trans('gallery::galleries.system name'), $errors, $gallery, ['data-slug' => 'target']) !!}
+                        @mediaMultiple('gallery', $gallery)
+                    </div>
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary btn-flat">{{ trans('core::core.button.update') }}</button>

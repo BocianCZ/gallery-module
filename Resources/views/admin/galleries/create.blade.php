@@ -17,7 +17,12 @@
         <div class="col-md-12">
             <div class="nav-tabs-custom">
                 <div class="tab-content">
-                    @include('gallery::admin.galleries.partials.create-fields')
+                    <div class="box-body">
+                        {!! Form::normalInput('name', trans('gallery::galleries.name'), $errors, null, ['data-slug' => 'source']) !!}
+                        {!! Form::normalInput('system_name', trans('gallery::galleries.system name'), $errors, null, ['data-slug' => 'target']) !!}
+                        @mediaMultiple('gallery')
+                    </div>
+
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary btn-flat">{{ trans('core::core.button.create') }}</button>

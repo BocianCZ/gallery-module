@@ -2,17 +2,8 @@
 
 namespace Modules\Gallery\Events;
 
-use Modules\Gallery\Entities\Gallery;
+use Modules\Media\Contracts\StoringMedia;
 
-class GalleryWasCreated
+class GalleryWasCreated extends StoringMediaEvent implements StoringMedia
 {
-    /**
-     * @var Gallery
-     */
-    public $gallery;
-
-    public function __construct(Gallery $gallery)
-    {
-        $this->gallery = $gallery;
-    }
 }

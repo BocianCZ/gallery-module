@@ -16,7 +16,7 @@ class EloquentGalleryRepository extends EloquentBaseRepository implements Galler
         event($event = new GalleryIsCreating($data));
         $gallery = $this->model->create($event->getAttributes());
 
-        event(new GalleryWasCreated($gallery));
+        event(new GalleryWasCreated($gallery, $data));
 
         return $gallery;
     }
@@ -26,7 +26,7 @@ class EloquentGalleryRepository extends EloquentBaseRepository implements Galler
         event($event = new GalleryIsUpdating($gallery, $data));
         $gallery->update($event->getAttributes());
 
-        event(new GalleryWasUpdated($gallery));
+        event(new GalleryWasUpdated($gallery, $data));
 
         return $gallery;
     }
