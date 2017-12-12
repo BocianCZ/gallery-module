@@ -12,7 +12,9 @@ New Gallery item will appear in the Sidebar.
 
 ## Prerequisites
 Gallery module by default uses Bootstrap 3 grid system and `img-responsive` classes to render gallery thumbnmails.
-This can bne easily overriden by using your own template (see Advanced Usage) 
+If your frontend theme does not use bootstrap, you can either load bootstrap CSS (bootstrap JavaScript is not needed)
+from CDN https://getbootstrap.com/docs/3.3/getting-started/
+or you can use your own blade template to render gallery (see Advanced Usage) 
 
 ## Usage (basic)
 
@@ -69,6 +71,13 @@ alias selectively to the specific frontend routes in your application
 ?>
 
 ```
+
+#### load frontend assets locally (not from CDN)
+if you are not a fan of loading frontend assets from CDN, you can use local copy provided with the Gallery module
+for convenience:
+* first publish module assets `php artisan module:publish Gallery`
+* use `<link rel="stylesheet" href="{!! Module::asset('gallery:css/baguetteBox.min.css') !!}" />` instead of the CDN CSS
+* use `<script src="{!! Module::asset('gallery:js/baguetteBox.min.js') !!}" async></script>` instead of the CDN JS
 
 ## Resources
 

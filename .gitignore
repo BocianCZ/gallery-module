@@ -4,3 +4,4 @@ composer.lock
 Modules/
 /.project
 build/
+node_modules
