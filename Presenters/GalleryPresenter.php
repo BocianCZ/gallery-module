@@ -9,6 +9,9 @@ use Modules\Gallery\Repositories\GalleryRepository;
 
 class GalleryPresenter
 {
+    const TEMPLATE_DEFAULT = 'partials.gallery';
+    const TEMPLATE_FALLBACK = 'gallery::frontend.bootstrap3-baguettebox';
+
     /** @var GalleryRepository */
     protected $galleryRepository;
 
@@ -42,10 +45,10 @@ class GalleryPresenter
 
     /**
      * @param Gallery|string $gallery
-     * @param string $template
+     * @param string|null $template
      * @return string
      */
-    public function render($gallery, $template = 'gallery::frontend.bootstrap3.basic')
+    public function render($gallery, $template = null)
     {
         if (!$gallery instanceof Gallery && is_string($gallery)) {
             $gallery = $this->galleryRepository->findByAttributes(['system_name' => $gallery]);
@@ -54,12 +57,29 @@ class GalleryPresenter
             return '';
         }
 
-        $view = $this->viewFactory->make($template)
+        $view = $this->viewFactory->make($this->findTemplate($template))
             ->with([
                 'gallery' => $gallery
             ]);
 
         return $view->render();
+    }
+
+    /**
+     * @param string $template
+     * @return string
+     */
+    private function findTemplate($template)
+    {
+        if ($this->viewFactory->exists($template)) {
+            return $template;
+        } elseif ($this->viewFactory->exists(self::TEMPLATE_DEFAULT)) {
+            return self::TEMPLATE_DEFAULT;
+        } elseif ($this->viewFactory->exists('gallery::frontend.' . setting('gallery::default-template'))) {
+            return 'gallery::frontend.' . setting('gallery::default-template');
+        }
+
+        return self::TEMPLATE_FALLBACK;
     }
 
 }

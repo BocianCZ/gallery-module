@@ -48,6 +48,7 @@ class GalleryServiceProvider extends ServiceProvider
     {
         $this->publishConfig('gallery', 'permissions');
         $this->publishConfig('gallery', 'config');
+        $this->publishConfig('gallery', 'settings');
         $this->registerBladeTags();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }

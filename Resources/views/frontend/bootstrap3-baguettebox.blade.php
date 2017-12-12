@@ -1,3 +1,4 @@
+<?php /** @var \Modules\Gallery\Entities\Gallery $gallery */ ?>
 <?php $galleryId = 'bociancz-gallery-' . $gallery->system_name; ?>
 <div class="row" id="{{ $galleryId }}">
     @foreach($gallery->files as $picture)
