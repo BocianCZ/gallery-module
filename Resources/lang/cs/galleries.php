@@ -11,5 +11,6 @@ return [
     'edit gallery' => 'Upravit galerii',
     'name' => 'Název',
     'system name' => 'Systémový název',
+    'snippet' => 'Kód (zkopírujte a vložte do šablony)',
     'description' => 'Popis',
 ];

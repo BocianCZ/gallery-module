@@ -23,7 +23,7 @@ class GalleryPresenter
 
     public function renderGalleries($html)
     {
-        preg_match_all('/__GALLERY\((.*)\)__/U', $html, $matches);
+        preg_match_all('/\[\[GALLERY\((.*)\)\]\]/U', $html, $matches);
         $replaceGalleries = [];
         foreach ($matches[1] as $galleryIndex => $galleryName) {
             // prevent loading same gallery twice

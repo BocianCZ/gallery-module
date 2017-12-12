@@ -36,6 +36,7 @@ class GalleryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerBindings();
+        $this->registerMiddleware();
 
         $this->app['events']->listen(
             BuildingSidebar::class,
@@ -74,8 +75,16 @@ class GalleryServiceProvider extends ServiceProvider
         });
     }
 
+    private function registerMiddleware()
+    {
+        foreach ($this->middleware as $name => $class) {
+            $this->app['router']->aliasMiddleware($name, $class);
+        }
+    }
+
     protected function registerBladeTags()
     {
+        //TODO: make a blade tag for this
         if (app()->environment() === 'testing') {
             return;
         }

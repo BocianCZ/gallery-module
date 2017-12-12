@@ -29,7 +29,7 @@
                         <thead>
                         <tr>
                             <th>{{ trans('gallery::galleries.name') }}</th>
-                            <th>{{ trans('gallery::galleries.system name') }}</th>
+                            <th>{{ trans('gallery::galleries.snippet') }}</th>
                             <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
                         </tr>
                         </thead>
@@ -43,9 +43,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{ route('admin.gallery.galleries.edit', [$gallery->id]) }}">
-                                        {{ $gallery->system_name }}
-                                    </a>
+                                    {{ $gallery->snippet }}
                                 </td>
 
                                 <td>

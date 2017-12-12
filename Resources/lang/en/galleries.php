@@ -11,5 +11,6 @@ return [
     'edit gallery' => 'Edit a Gallery',
     'name' => 'Name',
     'system name' => 'System name',
+    'snippet' => 'Snippet (copy and paste this into your page)',
     'description' => 'Description',
 ];

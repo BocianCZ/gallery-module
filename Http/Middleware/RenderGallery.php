@@ -21,6 +21,12 @@ class RenderGallery
         /** @var Response $response */
         $response = $next($request);
 
+        // do not render galleries on backend
+        if (app('asgard.onBackend') === true) {
+            return $response;
+        }
+
+        // if this is not a standard Response, return right away
         if(!$response instanceof Response) {
             return $response;
         }
@@ -29,5 +35,4 @@ class RenderGallery
 
         return $response;
     }
-
 }
