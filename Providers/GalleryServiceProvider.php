@@ -8,6 +8,7 @@ use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Gallery\Entities\Gallery;
 use Modules\Gallery\Events\Handlers\RegisterGallerySidebar;
+use Modules\Gallery\Http\Middleware\RenderGallery;
 use Modules\Gallery\Repositories\Cache\CacheGalleryDecorator;
 use Modules\Gallery\Repositories\Eloquent\EloquentGalleryRepository;
 use Modules\Gallery\Repositories\GalleryRepository;
@@ -15,12 +16,17 @@ use Modules\Gallery\Repositories\GalleryRepository;
 class GalleryServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration, CanGetSidebarClassForModule;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
      * @var bool
      */
     protected $defer = false;
+
+    protected $middleware = [
+        'gallery.render' => RenderGallery::class,
+    ];
 
     /**
      * Register the service provider.
