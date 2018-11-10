@@ -91,12 +91,14 @@ gallery JavaScript plugin baguetteBox.js (no jQuery neded), located in
 `Modules/Gallery/Resources/views/frontend/bootstrap3-baguettebox.blade.php`. There are several ways of changing this
 this default behavior:
 
-* you can go into the Gallery module Settings in admin interface, and enter one of the example gallery templates
+##### Module Settings
+you can go into the Gallery module Settings in admin interface, and enter one of the example gallery templates
 into the "Default Template" field. Current options are `plain` (simple display of img tags), `plain-links`
 (simple image tags, links open to new tab/window) or `bootstrap3-baguettebox` (Bootstrap 3 and BaguetteBox.js based
 responsive template with lightbox - this is also a default option)
 
-* you can create your own gallery template in `Theme/YourTheme/view/partials/gallery.blade.php`. If Gallery
+##### Custom single default template 
+you can create your own gallery template in `Theme/YourTheme/view/partials/gallery.blade.php`. If Gallery
 module finds a file in this location, it will automatically use it instead of the default one. Feel free to copy
 contents of one of the the module-provided samples to get an idea about what the file may look like.
 There are several examples in the `Modules/Gallery/Resources/views/frontend` directory
@@ -111,7 +113,19 @@ The simplest gallery template example would be something like this:
 but you can of course override the file as you like. You have `$gallery` variable available in the template, which 
 is an instance of `Modules\Gallery\Entities\Gallery` class.
 
-* TODO: provide custom template name (to be added)
+##### Custom template in the shortcode
+you can also provide your own custom gallery template by manually tweaking the gallery shortcode. Standard simple 
+gallery shortcode looks like this `[[GALLERY(gallery_name)]]`. It is kind of like a `GALLERY()` function with
+a single parameter (`gallery_name`).
+
+You can also provide a second parameter `template_name`. If you do, the module will use it instead of the default.
+
+The shortcode will then look like this `[[GALLERY(gallery_name,template_name)]]`, where `template_name` is name
+of your template, relative to your active frontend Theme using dot notation.
+
+For example, shortcode `[[GALLERY(my-gallery,galery.homepage.lightbox)]]` will load gallery named `my-gallery`,
+and it will use template located in `Themes/{your frontend theme}/gallery/homepage/lightbox.blade.php`
+
 
 ## Resources
 

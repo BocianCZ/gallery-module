@@ -28,7 +28,15 @@ class GalleryPresenter
     {
         preg_match_all('/\[\[GALLERY\((.*)\)\]\]/U', $html, $matches);
         $replaceGalleries = [];
-        foreach ($matches[1] as $galleryIndex => $galleryName) {
+        foreach ($matches[1] as $galleryIndex => $galleryParams) {
+            $galleryParamsArray = explode(',', $galleryParams);
+            $galleryName = $galleryParamsArray[0];
+
+            $templateName = null;
+            if (isset($galleryParamsArray[1]) && !empty(trim($galleryParamsArray[1]))) {
+                $templateName = trim($galleryParamsArray[1]);
+            }
+
             // prevent loading same gallery twice
             if (isset($replaceGalleries[$matches[0][$galleryIndex]])) {
                 continue;
@@ -36,7 +44,7 @@ class GalleryPresenter
 
             $gallery = $this->galleryRepository->findByAttributes(['system_name' => $galleryName]);
             if ($gallery) {
-                $replaceGalleries[$matches[0][$galleryIndex]] = $this->render($gallery);
+                $replaceGalleries[$matches[0][$galleryIndex]] = $this->render($gallery, $templateName);
             }
         }
 
