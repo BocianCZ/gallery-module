@@ -10,7 +10,7 @@ use Modules\Gallery\Repositories\GalleryRepository;
 class GalleryPresenter
 {
     const TEMPLATE_DEFAULT = 'partials.gallery';
-    const TEMPLATE_FALLBACK = 'gallery::frontend.bootstrap3-baguettebox';
+    const TEMPLATE_FALLBACK = 'gallery::frontend.bootstrap4-baguettebox';
 
     /** @var GalleryRepository */
     protected $galleryRepository;
