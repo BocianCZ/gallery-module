@@ -11,10 +11,10 @@ After the module is installed, you have to give yourself access in AsgardCMS (us
 New Gallery item will appear in the Sidebar.
 
 ## Prerequisites
-Gallery module by default uses Bootstrap 3 grid system and `img-responsive` classes to render gallery thumbnmails.
+Gallery module by default uses Bootstrap 4 grid system and `img-fluid` classes to render gallery thumbnmails.
 If your frontend theme does not use bootstrap, you can load bootstrap CSS from CDN 
 https://getbootstrap.com/docs/3.3/getting-started/ (bootstrap JavaScript is not needed).  
-Alternatively, you can use your own blade template to render gallery (see Advanced Usage) 
+Alternatively, you can use your own blade template to render gallery or switch to the Bootstrap 3 template also provided with the library (see Advanced Usage) 
 
 ## Usage (basic)
 
@@ -88,14 +88,13 @@ for convenience:
 #### Customize Gallery look
 Gallery module has several pre-loaded templates. By default, it will use simple bootstrap-based template with 
 gallery JavaScript plugin baguetteBox.js (no jQuery neded), located in
-`Modules/Gallery/Resources/views/frontend/bootstrap3-baguettebox.blade.php`. There are several ways of changing this
+`Modules/Gallery/Resources/views/frontend/bootstrap4-baguettebox.blade.php`. There are several ways of changing this
 this default behavior:
 
 ##### Module Settings
 you can go into the Gallery module Settings in admin interface, and enter one of the example gallery templates
 into the "Default Template" field. Current options are `plain` (simple display of img tags), `plain-links`
-(simple image tags, links open to new tab/window) or `bootstrap3-baguettebox` (Bootstrap 3 and BaguetteBox.js based
-responsive template with lightbox - this is also a default option)
+(simple image tags, links open to new tab/window) or `bootstrap4-baguettebox` / `bootstrap3-baguettebox` (Bootstrap 4 or 3 and BaguetteBox.js based responsive template with lightbox - Bootstrap 4 is also a default option)
 
 ##### Custom single default template 
 you can create your own gallery template in `Theme/YourTheme/view/partials/gallery.blade.php`. If Gallery
