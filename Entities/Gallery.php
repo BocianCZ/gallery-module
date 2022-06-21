@@ -25,7 +25,7 @@ class Gallery extends Model
         'description',
     ];
 
-    public function getSnippetAttribute()
+    public function getSnippetAttribute(): string
     {
         return sprintf('[[GALLERY(%s)]]', $this->system_name);
     }
